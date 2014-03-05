@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("#div1").load("index.html");
+  });
+});
+function load() {
+    $("#div1").load("index.html");
+}
+</script>
+</head>
+<body>
+
+<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+<button>Get External Content</button>
+<button onclick = "load()">Load through a function.</button>
+</body>
+</html>

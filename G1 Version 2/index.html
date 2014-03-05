@@ -13,6 +13,13 @@
     -->
     <title>BCIT Ride share</title>
         <link rel="stylesheet" type="text/css" href="style/base.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+function load(page) {
+    $("#bodyWrapper").load(page);
+}
+</script>
 </head>
 
 <body>
@@ -42,9 +49,9 @@
 				
 			<div id="navBar">
 				<ul id="navLinks">
-				<li><a href="bios.html">About Us</a></li>
-				<li><a href="services.html">Services</a></li>
-				<li><a id="navRightBorder" href="signup.html">Sign up</a></li>
+				<li><a onclick = "load('bios.html')">About Us</a></li>
+				<li><a onclick ="load('services.html')">Services</a></li>
+				<li><a onclick ="load('signup.html')">Sign up</a></li>
 				</ul>
 			</div>
 		</div>
@@ -80,6 +87,6 @@
 			</div> 
 		</div>
 	</div>
-</body>
+    </body>
 
 </html>
