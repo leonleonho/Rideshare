@@ -195,7 +195,8 @@ a#navRightBorder{ border-right: 1px solid #848585;}
 #map-canvas { 	box-shadow: 1px 1px 5px #000000;
 				height:	400px;}
 
-
+.asterix {
+			color: red;}
 
 /*#############################################################*/
 

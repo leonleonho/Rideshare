@@ -1,0 +1,9 @@
+I got the javascript working for the sign up page along with
+other intro pages. The only things i didn't know how to do was
+user friendly feed back with having no alert boxes and colored
+outlines around the boxes that are missing info (He never taught
+us how to do that). And i don't know how to work around the map
+javascript on the posting page. I'll try and work on it tonight
+but im just giving you this so you have something of mine for 
+the javascript. If I make any more progress I will keep posting
+this in updates. But for now this is what i got done.
