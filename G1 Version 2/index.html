@@ -13,14 +13,28 @@
     -->
     <title>BCIT Ride share</title>
         <link rel="stylesheet" type="text/css" href="style/base.css">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
-</script>
-<script>
-function load(page) {
-    $("#bodyWrapper").load(page);
-}
+		
+<script language="JavaScript" type="text/JavaScript">
+function validateUser() {
+var error = "All good";
+var Username = document.getElementById("user").value;
+var Password = document.getElementById("password").value;
+
+		if (Username == "" && Password == "") {
+				error = "Plase enter both Username and Password";
+		} else if (Username == "") {
+				error = "Please enter Username";
+		} else if (Password == "") {
+				error = "Please enter Password";
+		} else { if ((Username.match(/^[A][0]{2}\d{6}$/)) == null) {
+					error = "Incorrect BCIT ID Try Again";
+		} 
+		}
+		alert(error);
+		}
 </script>
 </head>
+
 
 <body>
 	
@@ -37,21 +51,21 @@ function load(page) {
 				</div>
 				
 				<div id="login">
-					<form name="login" action="./user/home.html"	method=post>	<!--TO DO-->
+					<form name="login" action="./user/home.html" 	method=post>	<!--TO DO-->
 					<label for="username">Username</label>
-					<input class="textbox" id="username" name="user" type="text">
+					<input class="textbox" id="user" name="user" type="text">
 					<label for="password">Password</label>
 					<input class="textbox" id="password" name="password" type="password">
-					<input class="button" type="submit" value="Login">
+					<input class="button" type="submit" value="Login" onClick="validateUser()">
 					</form>
 				</div>
 			</div>
 				
 			<div id="navBar">
 				<ul id="navLinks">
-				<li><a onclick = "load('bios.html')">About Us</a></li>
-				<li><a onclick ="load('services.html')">Services</a></li>
-				<li><a onclick ="load('signup.html')">Sign up</a></li>
+				<li><a href="bios.html">About Us</a></li>
+				<li><a href="services.html">Services</a></li>
+				<li><a id="navRightBorder" href="signup.html">Sign up</a></li>
 				</ul>
 			</div>
 		</div>
@@ -87,6 +101,6 @@ function load(page) {
 			</div> 
 		</div>
 	</div>
-    </body>
+</body>
 
 </html>
