@@ -47,9 +47,16 @@ var address = document.getElementById('startlocation').value;
     }
   });
 }
-
 google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+    
+</script>
+<script>
+function showAddress() {
+    function showAddress() {
+        alert('test');
+}
+
+</script>
 </head>
 
 <body>
@@ -107,7 +114,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
 						<h2>Arrival Time (--:--AM)</h2>
 						<input type = time name = aTime value = 05:00>
 						<h2>Start Location</h2>
-						<input class="textbox" id="startlocation" type =text name = startLocation><input type ="button" value = "Check Location" onclick = "codeAddress()">
+						<input class="textbox" id="startlocation" type =text name = startLocation><input type ="button" value = "Check Location" onclick = "codeAddress(); showAddress();">
+                        <br /><br /><br />
+                        <div id = "check">asdf</div>
 						<div id="map-canvas"></div>
                         <h2>Preferences</h2>
 						<textarea class="textform" rows = 15 cols = 80>"Your Preferences"</textarea><br/>
