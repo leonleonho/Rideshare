@@ -227,3 +227,8 @@ a#navRightBorder{ border-right: 1px solid #848585;}
 
 /* GLOBAL CSS*/
 p{ 	margin:0;}
+
+#warning {
+    color:red;
+}
+
