@@ -20,7 +20,7 @@ function load(page) {
     $("#bodyWrapper").load(page);
 }
 </script>
-<script language="JavaScript" type="text/JavaScript">
+<script>
 function validateUser() {
 var Username = document.getElementById("user").value;
 var Password = document.getElementById("password").value;
@@ -62,7 +62,7 @@ var Password = document.getElementById("password").value;
 				
 				<div id="login">
 					<form  id = "login1" name="login1" action="./user/home.html" 	method=post>
-					<label for="username">Username</label>
+					<label for="user">Username</label>
 					<input class="textbox" id="user" name="user" type="text">
 					<label for="password">Password</label>
 					<input class="textbox" id="password" name="password" type="password">
