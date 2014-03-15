@@ -46,16 +46,53 @@ var address = document.getElementById('startlocation').value;
       alert('It seems like we couldn\'t find your position. Please put in your full address');
     }
   });
+    document.getElementById('checkAddress').innerHTML = " Is this address correct?";
 }
-google.maps.event.addDomListener(window, 'load', initialize);
-    
+google.maps.event.addDomListener(window, 'load', initialize);    
 </script>
 <script>
-function showAddress() {
-    function showAddress() {
-        alert('test');
-}
-
+    function validateRole() {
+        if(document.getElementById('driver').checked || document.getElementById('passenger').checked) {
+            document.getElementById('warning0').innerHTML="";
+            return true;
+        } else {
+            document.getElementById('warning0').innerHTML="You must select an option";
+        }
+    }
+    function validateDate() {
+        if(document.getElementById('mon').checked 
+            || document.getElementById('tues').checked
+            || document.getElementById('weds').checked
+            || document.getElementById('thurs').checked
+            || document.getElementById('fri').checked
+            || document.getElementById('sat').checked
+            || document.getElementById('sun').checked){
+            document.getElementById('warning1').innerHTML="";
+            return true;
+        } else {
+            document.getElementById('warning1').innerHTML="You have to select a day";
+        }
+    }
+    function validateTime() {
+        var time = document.getElementById('atime').value;
+        if(time.match(/^([01]\d|2[0-3]):?([0-5]\d)$/) == null) {
+            document.getElementById('warning2').innerHTML="Please enter a valid time in 24 Hour format";
+        } else {
+            return true;
+        }
+    }
+    function validateAll() {
+        if(!validateRole()) {
+            return false;
+        } else if(!validateDate()){
+            return false;
+        } else if(!validateTime()){
+            return false;
+        } else if(document.getElementById('startlocation').value =="") {
+            document.getElementById('checkAddress').innerHTML="You have to fill in your address";
+            return false;
+        } 
+    }
 </script>
 </head>
 
@@ -93,12 +130,15 @@ function showAddress() {
 			<div id="bodyContent">
 				<div class="textContainer">
 					<h1>Post listing</h1>
-					<form name = update action="http://webdevfoundations.net/scripts/formdemo.asp" method = POST>
+					<form id = "postForm" name = update action="http://webdevfoundations.net/scripts/formdemo.asp" method = POST  onsubmit ="return validateAll();">
 						<h2>Role</h2>
+                        <span class = "asterix" id = "warning0"></span><br />
 						<input id="driver" type="radio" name="role" value="driver"><label for="driver">Driver</label><br/><br/>
 						<input id="passenger" type="radio" name="role" value="passenger"><label for="passenger">Passenger</label>
-						<h2>Days of the week</h2>
-						<input id="mon" type="checkbox" name = days value = mon><label for="mon">Monday</label>
+                        <h2>Days of the week</h2>
+						<span id = "warning1" class = "asterix"></span>
+                        <br />
+                        <input id="mon" type="checkbox" name = days value = mon><label for="mon">Monday</label>
 						<br/><br/>
 						<input id="tues" type="checkbox" name = days value = tues><label for="tues">Tuesday</label>
 						<br/><br/>
@@ -111,15 +151,17 @@ function showAddress() {
 						<input id="sat" type="checkbox" name = days value = sat><label for="sat">Saturday</label>
 						<br/><br/>
 						<input id="sun" type="checkbox" name = days value = sun><label for="sun">Sunday</label>
-						<h2>Arrival Time (--:--AM)</h2>
-						<input type = time name = aTime value = 05:00>
+						<h2>Arrival Time</h2>
+						<span class = "asterix" id ="warning2"></span>
+                        <br />
+                        <input id = "atime" type = "time" name = "aTime" value = "05:00">
 						<h2>Start Location</h2>
-						<input class="textbox" id="startlocation" type =text name = startLocation onblur = "codeAddress()">
+						<input class="textbox" id="startlocation" type =text name = startLocation onblur = "codeAddress()"><span id = "checkAddress" class = "asterix"></span>
 						<br /><br />
                         <div id="map-canvas"></div>
                         <h2>Preferences</h2>
 						<textarea class="textform" rows = 15 cols = 80>"Your Preferences"</textarea><br/>
-						<input type = submit value ="Submit" class ="button">
+						<input type = "submit" value ="Post" class ="button">
 					</form>
 				</div>
 			</div>
