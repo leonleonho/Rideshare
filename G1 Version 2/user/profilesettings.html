@@ -54,7 +54,7 @@
         var phone = document.getElementById("tele").value;
         var phone2 = phone;
         if(phone.match(/^(604|778)(|\s)[0-9]{3}(|\s)[0-9]{4}$/) == null) {
-            document.getElementById('warning3').innerHTML="Invalid phone number. Please follow format: 604 111 1111";
+            document.getElementById('warning3').innerHTML="*Invalid phone number. Please follow format: 604 111 1111";
         } else {
             document.getElementById('warning3').innerHTML = "";
             return true;
