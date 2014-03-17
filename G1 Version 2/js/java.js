@@ -1,4 +1,5 @@
 $(document).ready(function() {
+<<<<<<< HEAD
 var winHeight = $(window).height();
 var footerHeight = $('#footer').height();
 var headerHeight = $('#header').height();
@@ -11,3 +12,11 @@ if  (docHeight < winHeight){
 	}
 
 });
+=======
+var Height = $('#footer').height() + $('#bodyContent').height() + $('#header').height();
+var newHeight = ($(window).height() - Height) + ($('#bodyWrapper').height());
+    if(Height < $(window).height()) {
+            $('#bodyWrapper').css('height', newHeight  + 'px');
+}
+});
+>>>>>>> origin/Leon-Ho
