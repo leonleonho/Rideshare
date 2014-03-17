@@ -40,14 +40,6 @@
         }
 
     }
-    function checkSex() {
-        if(document.getElementById('male').checked || document.getElementById('female').checked) {
-            document.getElementById('warning4').innerHTML="";
-            return true;
-        } else {
-            document.getElementById('warning4').innerHTML="You must select an option";
-        }
-    }
     function validateEmail() {
         var Email = document.getElementById("email").value;
         if((Email.match(/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/)) == null) {
@@ -67,19 +59,6 @@
             return true;
         }
         
-    }
-    function validateAll(){
-        if(!validatePassword()){
-            return false;
-        } else if(!checkPassword()) {
-            return false;
-        } else if(!validateEmail()) {
-            return false;
-        } else if(!validatePhone()) {
-            return false;
-        } else if(!checkSex()) {
-            return false;
-        }
     }
                                                                                                                                         
 </script>
@@ -119,7 +98,7 @@
 			<div id="bodyContent">
 				<div class="textContainer">
 					<h1>Profile Settings</h1>
-					<form name = update action="http://webdevfoundations.net/scripts/formdemo.asp" method = POST id = "profileSettings" onsubmit = "return validateAll();">
+					<form name = update action="http://webdevfoundations.net/scripts/formdemo.asp" method = POST id = "profileSettings">
 						<label for="newpass">New Password</label><br/>
 						<input id="newpass" name = newpassword type = password class = textbox onblur = "validatePassword()"><span id = "warning0" class="asterix"></span><br/><br/>
 						<label for="confirmpass">Confirm Password</label><br/>
