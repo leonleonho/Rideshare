@@ -41,14 +41,6 @@
         }
 
     }
-    function checkSex() {
-        if(document.getElementById('male').checked || document.getElementById('female').checked) {
-            document.getElementById('warning4').innerHTML="";
-            return true;
-        } else {
-            document.getElementById('warning4').innerHTML="You must select an option";
-        }
-    }
     function validateEmail() {
         var Email = document.getElementById("email").value;
         if((Email.match(/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/)) == null) {
@@ -62,25 +54,12 @@
         var phone = document.getElementById("tele").value;
         var phone2 = phone;
         if(phone.match(/^(604|778)(|\s)[0-9]{3}(|\s)[0-9]{4}$/) == null) {
-            document.getElementById('warning3').innerHTML="Invalid phone number. Please follow format: 604 111 1111";
+            document.getElementById('warning3').innerHTML="*Invalid phone number. Please follow format: 604 111 1111";
         } else {
             document.getElementById('warning3').innerHTML = "";
             return true;
         }
         
-    }
-    function validateAll(){
-        if(!validatePassword()){
-            return false;
-        } else if(!checkPassword()) {
-            return false;
-        } else if(!validateEmail()) {
-            return false;
-        } else if(!validatePhone()) {
-            return false;
-        } else if(!checkSex()) {
-            return false;
-        }
     }
                                                                                                                                         
 </script>
@@ -120,7 +99,7 @@
 			<div id="bodyContent">
 				<div class="textContainer">
 					<h1>Profile Settings</h1>
-					<form name = update action="http://webdevfoundations.net/scripts/formdemo.asp" method = POST id = "profileSettings" onsubmit = "return validateAll();">
+					<form name = update action="http://webdevfoundations.net/scripts/formdemo.asp" method = POST id = "profileSettings">
 						<label for="newpass">New Password</label><br/>
 						<input id="newpass" name = newpassword type = password class = textbox onblur = "validatePassword()"><span id = "warning0" class="asterix"></span><br/><br/>
 						<label for="confirmpass">Confirm Password</label><br/>
