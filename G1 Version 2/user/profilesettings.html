@@ -61,7 +61,16 @@
         }
         
     }
-                                                                                                                                        
+                                                                                                                                                                                                                                                                               
+</script>
+<script>
+    function validateAll() {
+        var newPass = document.getElementById('newPass').value;
+        var confirmPass = document.getElementById('confirmPass').value;
+        var email = document.getElementById('email').value;
+        var tele = document.getElementyById('tele').value;
+    }
+    alert("Everything is a go");
 </script>
 </head>
 
@@ -99,7 +108,7 @@
 			<div id="bodyContent">
 				<div class="textContainer">
 					<h1>Profile Settings</h1>
-					<form name = update action="http://webdevfoundations.net/scripts/formdemo.asp" method = POST id = "profileSettings">
+					<form name = update action="http://webdevfoundations.net/scripts/formdemo.asp" method = POST id = "profileSettings" onsubmit ="return validateAll();">
 						<label for="newpass">New Password</label><br/>
 						<input id="newpass" name = newpassword type = password class = textbox onblur = "validatePassword()"><span id = "warning0" class="asterix"></span><br/><br/>
 						<label for="confirmpass">Confirm Password</label><br/>
