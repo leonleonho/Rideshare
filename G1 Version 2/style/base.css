@@ -209,7 +209,9 @@ a#navRightBorder{ border-right: 1px solid #848585;}
 	height: 120px;
 	min-width: 1000px;
 	box-shadow: 0px -3px 3px #000000;
-	z-index: 2;}
+	z-index: 2;
+    bottom:0;
+}
 #footerContent{	width: 1000px;
 				margin:auto;
 				padding-top: 10px;
