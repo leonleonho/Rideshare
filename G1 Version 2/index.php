@@ -38,9 +38,7 @@ var Password = document.getElementById("password").value;
             document.getElementById('warning').innerHTML="*BCIT ID is incorrect.";
             return false;
 		} 
-		else {
-            document.forms['login1'].submit();
-        }
+		return true;
 }
 </script>
 <script src="js/java.js"></script>
@@ -48,7 +46,6 @@ var Password = document.getElementById("password").value;
 
 
 <body>
-	
 	<div id="leftBackground">
 	</div>
 	<div id="rightBackground">
@@ -60,17 +57,23 @@ var Password = document.getElementById("password").value;
 				<div id="logo">
 				<a href="./index.html"> <img src=./images/Logo.gif alt = logo height= 100></a>
 				</div>
-				
+
 				<div id="login">
-					<form  id = "login1" name="login1" action="./user/home.html" 	method=post>
+					<form  id = "login1" name="login1" action="login.php" method="post" onsubmit = "return validateUser()">
 					<label for="user">Username</label>
 					<input class="textbox" id="user" name="user" type="text">
 					<label for="password">Password</label>
 					<input class="textbox" id="password" name="password" type="password">
-					<input class="button" type="button" value="Login" onClick="validateUser()">
+					<input class="button" type="submit" value="Login">
 					</form>
 				<br />
-                <span id = "warning"></span>
+                <span id = "warning">
+                    <?php
+                        if(isset($_GET['fail'])) {
+                            echo "*Username or Password was inccorect";   
+                            }
+                    ?>    
+                </span>
                 </div>
 			</div>
 				

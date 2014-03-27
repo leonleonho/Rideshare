@@ -26,6 +26,7 @@
         }
    }
         function validateSignUp() { 
+         
 		var Email = document.getElementById("email").value;
 		var Name = document.getElementById("name").value;
 		var Username = document.getElementById("su-username").value;
@@ -57,8 +58,13 @@
 			<div id="bodyContent">
 				<div class="textContainer">
 					<h2>Sign Up</h2><br/>
-					<p>It is easy to begin carpooling! Simply enter in you information to begin being matched with fellow people of BCIT</p><br/><br/><br/>
-					<form action="http://webdevfoundations.net/scripts/formdemo.asp" method="get" id ="signupForm" onsubmit = "return validateSignUp();">
+					<span class="asterix" id = "warning0">
+                    <?php
+                        
+                    ?>
+                    </span>
+                    <p>It is easy to begin carpooling! Simply enter in you information to begin being matched with fellow people of BCIT</p><br/><br/><br/>
+					<form action="signupValidate.php" method="post" id ="signupForm" onsubmit = "return validateSignUp();">
                     <label for="name">Name<span class="asterix" id = "warning0">*</span></label><br/> 
 					
                     <input id="name" class =signup type="text" name="name"  placeholder="First and Last(John Doe)"><br/>
@@ -75,7 +81,6 @@
                     <label for="email">E-mail<span class="asterix" id = "warning4">*</span></label><br/>
 					
                     <input id="email" class =signup type="text" name="email" placeholder="sample@example.ca"><br/>
-					
                     <p>(<span class="asterix">*</span>)  Required Field</p></br>
 					<input class="button" type="submit" value="Sign up"><br/>
                     </form>
