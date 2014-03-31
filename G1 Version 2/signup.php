@@ -1,3 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+    <!-- 
+		BCIT RIDE SHARE
+		Leon Ho 
+        A00879122
+		
+		Lukasz Pacyk
+		A00814851
+    -->
+    <title>BCIT Ride share</title>
+        <link rel="stylesheet" type="text/css" href="style/base.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>    
+    <script src="/js/java.js"></script>
 	<script language="JavaScript" type="text/JavaScript">
 	
 	function validatePassword() {
@@ -55,15 +72,64 @@
 	}                                                                                                                                                                                                                                                                                                                                                                        
 	</script>
 <script src="js/java.js"></script>
+    </head>
+
+<body>
+	
+	<div id="leftBackground">
+	</div>
+	<div id="rightBackground">
+	</div>
+
+	<div id="wrapper">
+		<div id="header"> 
+			<div id="headerContent">
+				<div id="logo">
+				<a href="./index.php"> <img src=./images/Logo.gif alt = logo height= 100></a>
+				</div>
+				
+                <div id="login">
+					<form  id = "login1" name="login1" action="login.php" method="post" onsubmit = "return validateUser()">
+					<label for="user">Username</label>
+					<input class="textbox" id="user" name="user" type="text">
+					<label for="password">Password</label>
+					<input class="textbox" id="password" name="password" type="password">
+					<input name = "location" value = "signup.php" type = "hidden">
+                    <input class="button" type="submit" value="Login">
+					</form>
+				<br />
+                <span id = "warning">
+                    <?php
+                        if(isset($_GET['fail'])) {
+                            echo "*Username or Password was inccorect";   
+                            }
+                    ?>    
+                </span>
+                </div>
+			</div>
+				
+			<div id="navBar">
+				<ul id="navLinks">
+				<li><a href="bios.php">About Us</a></li>
+				<li><a href="services.php">Services</a></li>
+				<li><a id="navRightBorder" href="signup.php">Sign up</a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<div id="bodyWrapper">
 			<div id="bodyContent">
 				<div class="textContainer">
 					<h2>Sign Up</h2><br/>
-					<span class="asterix" id = "warning0">
+
+                    <p>It is easy to begin carpooling! Simply enter in you information to begin being matched with fellow people of BCIT</p><br/>
+                    <span class="asterix" id = "warning0">
                     <?php
-                        
+                        if(isset($_GET['error'])){                        
+                        echo $_GET['error'];
+                        }
                     ?>
                     </span>
-                    <p>It is easy to begin carpooling! Simply enter in you information to begin being matched with fellow people of BCIT</p><br/><br/><br/>
 					<form action="signupValidate.php" method="post" id ="signupForm" onsubmit = "return validateSignUp();">
                     <label for="name">Name<span class="asterix" id = "warning0">*</span></label><br/> 
 					
@@ -86,4 +152,20 @@
                     </form>
 				</div>
 			</div>
+		</div>
 	
+	
+		<div id="footer">
+			<div id="footerContent">
+				<div id="footerLogo">
+					<img src=./images/Logo.gif alt = logo height= 75>
+				</div>
+				<div id="footerText">
+					<p>&copy; 2014 BCIT Ride Share</p>
+				</div>
+			</div> 
+		</div>
+	</div>
+</body>
+
+</html>

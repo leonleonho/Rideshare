@@ -13,13 +13,15 @@
         while($row = mysqli_fetch_array($result))
               {
                 if(strcasecmp($row['id'], $user) == 0 && $row['password'] == $pass) {
-                    header( 'Location: user/home.html' ) ;
+                    setcookie("user",$user, time()+3600*24);
+                    header( 'Location: user/home.php' ) ;
                 } else {
                     echo "failed";
                 }
               }
     } else {
-        header( 'Location: index.php?fail=1' ) ;
+        $location = $_POST['location'] . "?fail=1";
+        header( "Location: $location" );
     }
 
     

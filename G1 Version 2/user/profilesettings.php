@@ -1,3 +1,6 @@
+<?php
+    include 'checkUser.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,7 +79,7 @@
 		<div id="header"> 
 			<div id="headerContent">
 				<div id="logo">
-				<a href="./home.html"> <img src=../images/Logo.gif alt = logo height= 100></a>
+				<a href="home.php"> <img src=../images/Logo.gif alt = logo height= 100></a>
 				</div>
 				
 				<div id="login">
@@ -88,9 +91,9 @@
 				
 			<div id="navBar">
 				<ul id="navLinks">
-				<li><a href="home.html">Home</a></li>
-				<li><a href="posting.html">Post listing</a></li>
-				<li><a id="navRightBorder" href="profilesettings.html">Profile settings</a></li>
+				<li><a href="home.php">Home</a></li>
+				<li><a href="posting.php">Post listing</a></li>
+				<li><a id="navRightBorder" href="profilesettings.php">Profile settings</a></li>
 				</ul>
 			</div>
 		</div>

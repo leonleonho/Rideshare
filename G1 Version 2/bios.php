@@ -1,5 +1,97 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+    <!-- 
+		BCIT RIDE SHARE
+		Leon Ho 
+        A00879122
+		
+		Lukasz Pacyk
+		A00814851
+    -->
+    <title>BCIT Ride share</title>
+        <link rel="stylesheet" type="text/css" href="style/base.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+function load(page) {
+    $("#bodyWrapper").load(page);
+
+}
 <script src="js/java.js"></script>
-<div id="bodyContent">
+
+<script>
+function validateUser() {
+var Username = document.getElementById("user").value;
+var Password = document.getElementById("password").value;
+
+		if (Username == "" && Password == "") {
+            document.getElementById('warning').innerHTML="*Username can not be empty.";
+            return false;
+		} else if (Username == "") {
+            document.getElementById('warning').innerHTML="*Username can not be empty.";
+            return false;
+		} else if (Password == "") {
+            document.getElementById('warning').innerHTML="*Password can not be empty.";
+            return false;
+		} else if ((Username.match(/^[a][0]{2}\d{6}$/i)) == null ) {
+            document.getElementById('warning').innerHTML="*BCIT ID is incorrect.";
+            return false;
+		} 
+		return true;
+}
+</script>
+<script src="js/java.js"></script>
+</head>
+
+
+<body>
+	<div id="leftBackground">
+	</div>
+	<div id="rightBackground">
+	</div>
+
+	<div id="wrapper">
+		<div id="header"> 
+			<div id="headerContent">
+				<div id="logo">
+				<a href="./index.php"> <img src=./images/Logo.gif alt = logo height= 100></a>
+				</div>
+
+				<div id="login">
+					<form  id = "login1" name="login1" action="login.php" method="post" onsubmit = "return validateUser()">
+					<label for="user">Username</label>
+					<input class="textbox" id="user" name="user" type="text">
+					<label for="password">Password</label>
+					<input class="textbox" id="password" name="password" type="password">
+                    <input name = "location" value = "bios.php" type = "hidden">
+					<input class="button" type="submit" value="Login">
+					</form>
+				<br />
+                <span id = "warning">
+                    <?php
+                        if(isset($_GET['fail'])) {
+                            echo "*Username or Password was inccorect";   
+                            }
+                    ?>    
+                </span>
+                </div>
+			</div>
+				
+			<div id="navBar">
+				<ul id="navLinks">
+				<li><a href = "bios.php">About Us</a></li>
+				<li><a href = "services.php">Services</a></li>
+				<li><a id="navRightBorder" href = "signup.php">Sign up</a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<div id="bodyWrapper">
+			<div id="bodyContent">
 				<div class="textContainer">
 					<h2>Lukasz Pacyk</h2>
 					<p>My name is Lukasz Pacyk( pronounced Lucas). My Heritage is Polish but my home town is Coquitlam. I had previously attended Simon Fraser University for a year before finding my passion for programming. I decided to come to the esteemed CST program at BCIT to continue my education. Outside of school I try to stay off the computer. I go to the gym multiple times a week and obsess over eating healthy. I also enjoy going on long full day hikes into the beautiful hills and mountains of British Columbia.</p><br/>
@@ -29,3 +121,20 @@
 					<p> am an attentive and hard working person.I hope these personality traits can be used to help my group achieve their dream goal in mind for this project.</p>
 				</div>
 </div>
+		</div>
+	
+	
+		<div id="footer">
+			<div id="footerContent">
+				<div id="footerLogo">
+					<img src=./images/Logo.gif alt = logo height= 75>
+				</div>
+				<div id="footerText">
+					<p>&copy; 2014 BCIT Ride Share</p>
+				</div>
+			</div> 
+		</div>
+	</div>
+    </body>
+
+</html>

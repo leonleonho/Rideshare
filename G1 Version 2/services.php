@@ -15,6 +15,12 @@
         <link rel="stylesheet" type="text/css" href="style/base.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>
+function load(page) {
+    $("#bodyWrapper").load(page);
+
+}
+<script src="js/java.js"></script>
+
 </script>
 <script>
 function validateUser() {
@@ -51,7 +57,7 @@ var Password = document.getElementById("password").value;
 		<div id="header"> 
 			<div id="headerContent">
 				<div id="logo">
-			     <img src=./images/Logo.gif alt = logo height= 100>
+				<a href="./index.php"> <img src=./images/Logo.gif alt = logo height= 100></a>
 				</div>
 
 				<div id="login">
@@ -60,8 +66,8 @@ var Password = document.getElementById("password").value;
 					<input class="textbox" id="user" name="user" type="text">
 					<label for="password">Password</label>
 					<input class="textbox" id="password" name="password" type="password">
-                    <input name = "location" value = "index.php" type = "hidden">
-					<input class="button" type="submit" value="Login">
+					<input name = "location" value = "services.php" type = "hidden">
+                    <input class="button" type="submit" value="Login">
 					</form>
 				<br />
                 <span id = "warning">
@@ -84,22 +90,24 @@ var Password = document.getElementById("password").value;
 		</div>
 		
 		<div id="bodyWrapper">
-			<div id="bodyContent">
+<div id="bodyContent">
+
 				<div class="textContainer">
-					<h1>Tired of paying for gas and taking the bus?</h1>
-					<p>Sign up to our ride share program to for an opportunity to change your life.</p>
-					<ul>
-						<li>Meet new people</li>
-						<li>Cut transit time</li>
-						<li>Save money</li>
-						<li>Help the environment</li>
-					</ul>
+				<h2>Carpooling</h2>
+				<p>Carpooling was a hot topic before it fizzled out. People feel unsafe riding with strangers thus carpooling never became popular. However, with out service you do not have to deal with those issues. Transit is often awkward and inconvenient in the lower mainland. Sometimes that car ride may take as little as a quarter of the time transit may take! </p>
 				</div>
-				<div class="imageContainer">
-					<img src =  ./images/Map.jpg width =700 alt = map>  
+				<hr>
+				<div class="textContainer">
+				<h2>Why Us?</h2>
+				<p>We are determined to make it easy for people to match up with each other. By creating this service we hope to connect people at British Columbia's Institute of Technology. We provide an easy to use accessible service. By ensuring that you are only matched with the BCIT community, we make it safe to carpool.</p>
 				</div>
-				
-			</div>
+				<hr>
+				<div class="textContainer">
+				<h2>How does it work?</h2>
+				<p>Your BCIT e-mail is used to verify that you are from BCIT. After registering you can view listings of drivers who are looking for passengers. Also, you may view passengers who are looking for a driver. You can then contact whomever you need to arrange commute plans. By sharing a ride you save the environment. The driver saves a large amount of money and the passanger saves precious time. This service is a benefit to everyone. Sign up now to see for yourself!</p>
+                </div>
+</div>
+
 		</div>
 	
 	
