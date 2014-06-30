@@ -15,10 +15,6 @@
         <link rel="stylesheet" type="text/css" href="style/base.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>
-function load(page) {
-    $("#bodyWrapper").load(page);
-
-}
 </script>
 <script>
 function validateUser() {
@@ -38,9 +34,7 @@ var Password = document.getElementById("password").value;
             document.getElementById('warning').innerHTML="*BCIT ID is incorrect.";
             return false;
 		} 
-		else {
-            document.forms['login1'].submit();
-        }
+		return true;
 }
 </script>
 <script src="js/java.js"></script>
@@ -48,7 +42,6 @@ var Password = document.getElementById("password").value;
 
 
 <body>
-	
 	<div id="leftBackground">
 	</div>
 	<div id="rightBackground">
@@ -58,27 +51,34 @@ var Password = document.getElementById("password").value;
 		<div id="header"> 
 			<div id="headerContent">
 				<div id="logo">
-				<a href="./index.html"> <img src=./images/Logo.gif alt = logo height= 100></a>
+			     <img src=./images/Logo.gif alt = logo height= 100>
 				</div>
-				
+
 				<div id="login">
-					<form  id = "login1" name="login1" action="/user/home.html">
+					<form  id = "login1" name="login1" action="login.php" method="post" onsubmit = "return validateUser()">
 					<label for="user">Username</label>
 					<input class="textbox" id="user" name="user" type="text">
 					<label for="password">Password</label>
 					<input class="textbox" id="password" name="password" type="password">
-					<input class="button" type="button" value="Login" onClick="validateUser()">
+                    <input name = "location" value = "index.php" type = "hidden">
+					<input class="button" type="submit" value="Login">
 					</form>
 				<br />
-                <span id = "warning"></span>
+                <span id = "warning">
+                    <?php
+                        if(isset($_GET['fail'])) {
+                            echo "*Username or Password was inccorect";   
+                            }
+                    ?>    
+                </span>
                 </div>
 			</div>
 				
 			<div id="navBar">
 				<ul id="navLinks">
-				<li><a onclick = "load('bios.html')">About Us</a></li>
-				<li><a onclick ="load('services.html')">Services</a></li>
-				<li><a onclick ="load('signup.html')">Sign up</a></li>
+				<li><a href = "bios.php">About Us</a></li>
+				<li><a href = "services.php">Services</a></li>
+				<li><a id="navRightBorder" href = "signup.php">Sign up</a></li>
 				</ul>
 			</div>
 		</div>

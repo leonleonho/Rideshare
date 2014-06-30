@@ -1,3 +1,54 @@
+<?php
+    include 'connection.php';
+    // Check connection
+    if (mysqli_connect_errno())
+      {
+      echo "Failed to connect to MySQL: " . mysqli_connect_error();
+      }
+
+
+    $user = $_POST['user'];
+    $pass = $_POST['password'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $request = "SELECT * FROM users WHERE id = '$user'";
+    $result = mysqli_query($con, $request);
+    if(mysqli_num_rows($result)!=0){    
+        while($row = mysqli_fetch_array($result))
+              {
+                if(strcasecmp($row['id'], $user) == 0) {
+                    header( 'Location: signup.php?error=Found another account with same ID' ) ;
+                } else {
+                    echo "failed";
+                }
+              }
+    } else {
+       
+        $request = "INSERT INTO users (id, name, password,email) VALUES ('$user', '$name', '$pass', '$email')";
+       // echo $request;
+        mysqli_query($con, $request);
+    }
+
+    mysqli_close($con);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+    <!-- 
+		BCIT RIDE SHARE
+		Leon Ho 
+        A00879122
+		
+		Lukasz Pacyk
+		A00814851
+    -->
+    <title>BCIT Ride share</title>
+        <link rel="stylesheet" type="text/css" href="style/base.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>    
+    <script src="/js/java.js"></script>
 	<script language="JavaScript" type="text/JavaScript">
 	
 	function validatePassword() {
@@ -26,6 +77,7 @@
         }
    }
         function validateSignUp() { 
+         
 		var Email = document.getElementById("email").value;
 		var Name = document.getElementById("name").value;
 		var Username = document.getElementById("su-username").value;
@@ -54,31 +106,73 @@
 	}                                                                                                                                                                                                                                                                                                                                                                        
 	</script>
 <script src="js/java.js"></script>
+    </head>
+
+<body>
+	
+	<div id="leftBackground">
+	</div>
+	<div id="rightBackground">
+	</div>
+
+	<div id="wrapper">
+		<div id="header"> 
+			<div id="headerContent">
+				<div id="logo">
+				<a href="./index.php"> <img src=./images/Logo.gif alt = logo height= 100></a>
+				</div>
+				
+                <div id="login">
+					<form  id = "login1" name="login1" action="login.php" method="post" onsubmit = "return validateUser()">
+					<label for="user">Username</label>
+					<input class="textbox" id="user" name="user" type="text">
+					<label for="password">Password</label>
+					<input class="textbox" id="password" name="password" type="password">
+					<input name = "location" value = "signupValidate.php" type = "hidden">
+                    <input class="button" type="submit" value="Login">
+					</form>
+				<br />
+                <span id = "warning">
+                    <?php
+                        if(isset($_GET['fail'])) {
+                            echo "*Username or Password was inccorect";   
+                            }
+                    ?>    
+                </span>
+                </div>
+			</div>
+				
+			<div id="navBar">
+				<ul id="navLinks">
+				<li><a href="bios.html">About Us</a></li>
+				<li><a href="services.html">Services</a></li>
+				<li><a id="navRightBorder" href="signup.php">Sign up</a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<div id="bodyWrapper">
 			<div id="bodyContent">
 				<div class="textContainer">
-					<h2>Sign Up</h2><br/>
-					<p>It is easy to begin carpooling! Simply enter in you information to begin being matched with fellow people of BCIT</p><br/><br/><br/>
-					<form action="http://webdevfoundations.net/scripts/formdemo.asp" method="get" id ="signupForm" onsubmit = "return validateSignUp();">
-                    <label for="name">Name<span class="asterix" id = "warning0">*</span></label><br/> 
-					
-                    <input id="name" class =signup type="text" name="name"  placeholder="First and Last(John Doe)"><br/>
-					
-                    <label for="su-username">Username<span class="asterix" id = "warning1">*</span></label><br/>
-					
-                    <input id="su-username" class =signup type="text" name="user" placeholder="BCIT ID"><br/>
-					
-                    <label for="su-password">Password<span class="asterix" id = "warning2">*</span></label><br/>
-					
-                    <input id="su-password" class =signup type="password" name="password" onblur="validatePassword()"><br/>
-					<label for="confirmPass">Confirm Password <span class = "asterix" id = "warning3"></span></label><br />
-                    <input class =signup id = "confirmPass" name = "confirmPass" type = "password" onblur = "confirmPass()"><br />
-                    <label for="email">E-mail<span class="asterix" id = "warning4">*</span></label><br/>
-					
-                    <input id="email" class =signup type="text" name="email" placeholder="sample@example.ca"><br/>
-					
-                    <p>(<span class="asterix">*</span>)  Required Field</p></br>
-					<input class="button" type="submit" value="Sign up"><br/>
+					<h2>Hurray!</h2><br/>
+                    Account creation successful!
                     </form>
 				</div>
 			</div>
+		</div>
 	
+	
+		<div id="footer">
+			<div id="footerContent">
+				<div id="footerLogo">
+					<img src=./images/Logo.gif alt = logo height= 75>
+				</div>
+				<div id="footerText">
+					<p>&copy; 2014 BCIT Ride Share</p>
+				</div>
+			</div> 
+		</div>
+	</div>
+</body>
+
+</html>
